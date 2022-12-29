@@ -5,6 +5,8 @@
     <artifactId>spring-mvc-kotlin</artifactId>
     <name>spring-mvc-kotlin</name>
     <packaging>war</packaging>
+    <groupId>org.springframework.boot</groupId>
+    <version>1.0</version>
     
     <repositories>
         <repository>
