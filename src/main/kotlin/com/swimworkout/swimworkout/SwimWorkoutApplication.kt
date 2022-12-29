@@ -13,12 +13,6 @@ class SwimWorkoutApplication
 
 fun main(args: Array<String>) {
     runApplication<SwimWorkoutApplication>(*args)
-
-    val ngrokClient: NgrokClient = Builder().build()
-    val createTunnel: CreateTunnel = Builder()
-        .withAddr(8080)
-        .build()
-    val tunnel: Tunnel = ngrokClient.connect(createTunnel)
 }
 
 @Bean
