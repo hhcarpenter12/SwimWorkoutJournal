@@ -1,4 +1,4 @@
-package com.swimworkout.swimworkout
+package com.swimworkout
 
 import com.samskivert.mustache.DefaultCollector
 import com.samskivert.mustache.Mustache

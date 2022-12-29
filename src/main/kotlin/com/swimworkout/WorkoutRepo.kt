@@ -1,4 +1,4 @@
-package com.swimworkout.swimworkout;
+package com.swimworkout;
 
 import SwimWorkout
 import org.springframework.stereotype.Repository
