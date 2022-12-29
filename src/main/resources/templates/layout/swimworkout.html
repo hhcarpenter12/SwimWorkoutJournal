@@ -1,0 +1,50 @@
+<div class="starter-template">
+    <h1>Swim Workout Journal</h1>
+    <h2>Powered by Kotlin and Spring</h2>
+
+    <form name="swimworkout" action="/add" method="post">
+
+
+        <label for="numReps">Number of Reps</label>
+        <input type="number" name="numReps" id="numReps" required>
+
+        <br>
+
+        <label for="distance">Distance (Yards or Meters)</label>
+        <input type="number" name="distance" id="distance" required>
+
+        <br>
+
+        <label for="description">Description (Fly, Free, Scull, Kick, ETC.)</label>
+        <input type="text" name="description" id = "description" required/>
+
+        <br>
+
+        <label for="intervalTime">Interval (Please enter valid input like 1:30)</label>
+        <input type="text" name="intervalTime" id = "intervalTime" required/>
+
+        <br>
+
+        <label for="workoutNotes">Workout Notes (Times held, how did you feel, what can be improved, etc.)</label>
+        <input type="text" name="workoutNotes" id = "workoutNotes"/>
+
+        <br>
+
+        <label for="completionDate">Completion Date</label>
+        <input type="date" name="completionDate" id = "completionDate">
+
+        <br>
+
+        <input type="submit" value="Save" />
+    </form>
+
+    {{#swimworkouts}}
+
+    <h3>{{numReps}} x {{distance}} {{description}} on the {{intervalTime}}</h3>
+    <p>Workout Notes: {{workoutNotes}}</p>
+    <p>Completion Date: {{completionDate}}</p>
+
+    <button><a href="/delete/{{id}}">Delete Workout</a></button>
+
+    {{/swimworkouts}}
+</div>
