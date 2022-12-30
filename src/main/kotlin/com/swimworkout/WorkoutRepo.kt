@@ -1,7 +1,11 @@
 package com.swimworkout;
 
 import SwimWorkout
+import antlr.StringUtils
 import org.springframework.stereotype.Repository
+import java.time.Duration
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 
 @Repository
@@ -10,7 +14,7 @@ import org.springframework.stereotype.Repository
       var mAllSwimWorkout = mutableListOf<SwimWorkout>()
 
       init {
-         val s1 = SwimWorkout(50, 10, "freestyle best average", "1:00", "Held 28.5s, need to work turns", "2022/12/29", 0)
+         val s1 = SwimWorkout(50, 10, "freestyle best average", "1:30", "Held 28.5s, need to work turns", "2022/12/29", 500, "10:00", 0)
 
 
          mAllSwimWorkout.add(s1)
@@ -62,6 +66,18 @@ import org.springframework.stereotype.Repository
          {
             passSwimWorkout.workoutNotes = "N/A"
          }
+
+         val seconds = passSwimWorkout.intervalTime.substringAfterLast(":").toInt()
+         val minutes = passSwimWorkout.intervalTime.substringBeforeLast(":").toInt()
+
+         val estTime = (((minutes * 60) + (seconds)) * passSwimWorkout.numReps)
+
+         val min = estTime / 60
+         val sec = estTime % 60
+
+         passSwimWorkout.estimatedTime = min.toString() + " minutes " + sec.toString() + " seconds";
+
+         passSwimWorkout.totalYardage = passSwimWorkout.numReps * passSwimWorkout.distance
 
          passSwimWorkout.id = findId()
          mAllSwimWorkout.add(passSwimWorkout)
