@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.servlet.ModelAndView
+import java.util.*
 import kotlin.collections.List
 import kotlin.collections.MutableMap
 import kotlin.collections.set
@@ -23,6 +24,8 @@ class WorkoutController {
     fun displayWorkouts(model: MutableMap<String?, Any?>): ModelAndView? {
         val swimworkouts: List<SwimWorkout> = workoutsRepo.getAllWorkouts()
         model["swimworkouts"] = swimworkouts
+        model["allTimeDistance"] = workoutsRepo.allTimeYardage()
+        model["allTimeDuration"] = workoutsRepo.allTimeDuration()
         return ModelAndView("index", model)
     }
 
@@ -35,7 +38,7 @@ class WorkoutController {
     }
 
     @GetMapping("/delete/{id}")
-    fun deleteWorkout(model: MutableMap<String?, Any?>, @PathVariable("id") id: Int): ModelAndView?
+    fun deleteWorkout(model: MutableMap<String?, Any?>, @PathVariable("id") id: UUID): ModelAndView?
     {
         workoutsRepo.deleteWorkout(id)
         val swimworkouts: List<SwimWorkout> = workoutsRepo.getAllWorkouts()

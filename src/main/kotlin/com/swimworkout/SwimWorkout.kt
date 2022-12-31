@@ -1,3 +1,4 @@
+import java.util.*
 import javax.persistence.*
 
 
@@ -11,4 +12,7 @@ class SwimWorkout(
     var completionDate: String? = null,
     var totalYardage: Int = 0,
     var estimatedTime: String = "",
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) var id: Int = 0)
+    @Id
+    @Column(name = "id", nullable = true)
+    var id: UUID?)
+
