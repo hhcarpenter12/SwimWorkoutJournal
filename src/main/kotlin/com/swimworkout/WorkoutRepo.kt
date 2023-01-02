@@ -40,9 +40,14 @@ import java.util.*
          val min = totalTime / 60
          val sec = totalTime % 60
 
+         if (sec < 10)
+         {
+            return min.toString() + ":" + "0" + sec.toString()
+         }
+
+
          return min.toString() + ":" + sec.toString()
       }
-
 
       /**
        * Retrieve all Workout.
